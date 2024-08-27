@@ -6,9 +6,8 @@ import (
 	"log"
 	"math/rand"
 
-	"github.com/shania-kawa/Billing-Project/api"
-
-	"github.com/shania-kawa/Billing-Project/pkg/db"
+	"github.com/shania-kawa/Billing_Project/api"
+	"github.com/shania-kawa/Billing_Project/pkg/db"
 )
 
 type BillingService struct {

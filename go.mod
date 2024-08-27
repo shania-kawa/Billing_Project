@@ -1,4 +1,4 @@
-module github.com/shania-kawa/Billing-Project
+module github.com/shania-kawa/Billing_Project
 
 go 1.22.5
 

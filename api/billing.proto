@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api;
 
-option go_package = "github.com/shania-kawa/billing-project/api";
+option go_package = "github.com/shania-kawa/billing_project/api";
 
 service BilligService {
 
