@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package api;
+
+option go_package = "github.com/shania-kawa/billing-project/api";
+
+service BilligService {
+
+    rpc ProcessPayment (PaymentRequest) returns (PaymentResponse){}
+    rpc HandleWebhook(WebhookRequest) returns (WebhookReponse){}
+
+}
+
+message PaymentRequest {
+    string card_number = 1;
+    string card_expiry = 2;
+    string card_cvc = 3;
+    double amount = 4;
+    string currency = 5;
+
+}
+
+message PaymentResponse{
+    bool success = 1;
+    string transaction_id =2;
+    string message = 3;
+
+}
+
+
+message WebhookRequest{
+    string event =1 ;
+    string transaction_id =2;
+    string status = 3;
+
+}
+
+message WebhookReponse{
+    bool success =1;
+    string message = 2;
+}
