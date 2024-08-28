@@ -29,10 +29,11 @@ func main() {
 	}
 
 	grpcServer := grpc.NewServer()
-	api.RegisterBillingServiceServer(grpcServer, &service.BillingService{})
+
+	api.RegisterBilligServiceServer(grpcServer, &service.BillingService{})
 	log.Println("grpc server is running on port 50051")
 
-	if err := grpcServer.serve(listener); err != nil {
+	if err := grpcServer.Serve(listener); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 
 	}

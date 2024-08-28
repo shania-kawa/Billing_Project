@@ -4,15 +4,23 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 
 	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/joho/godotenv"
 )
 
 var DB *pgxpool.Pool
 
 func Connect() error {
-	connStr := "postgresql://billing_project:12345@localhost:5432/billing_project?sslmode=disable"
 	var err error
+
+	err = godotenv.Load()
+	if err != nil {
+		log.Fatalf("error loading .env file %v", err)
+	}
+	connStr := os.Getenv("DATABASE_URL")
+
 	DB, err = pgxpool.Connect(context.Background(), connStr)
 	if err != nil {
 		return fmt.Errorf("unable to connect to database :%v\n", err)
