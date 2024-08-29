@@ -78,7 +78,7 @@ func RunTables() {
 
 }
 
-func Close() {
-	DB.Close()
-	log.Println("closed the database connection")
-}
+// func Close() {
+// 	DB.Close()
+// 	log.Println("closed the database connection")
+// }

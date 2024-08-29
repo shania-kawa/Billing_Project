@@ -15,7 +15,8 @@ type BillingService struct {
 	api.UnimplementedBilligServiceServer
 }
 
-func (s *BillingService) ProcessPyament(ctx context.Context, req *api.PaymentRequest) (*api.PaymentResponse, error) {
+func (s *BillingService) ProcessPayment(ctx context.Context, req *api.PaymentRequest) (*api.PaymentResponse, error) {
+
 	if len(req.CardNumber) != 16 {
 		return &api.PaymentResponse{
 			Success: false,
@@ -34,7 +35,7 @@ func (s *BillingService) ProcessPyament(ctx context.Context, req *api.PaymentReq
 
 	_, err = conn.Exec(ctx, `
 	INSERT INTO transactions (transaction_id,amount,currency,status)
-	VALUES ($1, $2, $3, $4, $5)`,
+	VALUES ($1, $2, $3, $4)`,
 		transaction_id, req.Amount, req.Currency, "SUCCESS")
 	if err != nil {
 		log.Printf("failed to store transaction: %v", err)

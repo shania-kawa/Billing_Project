@@ -19,7 +19,7 @@ func main() {
 
 	}
 	db.RunTables()
-	db.Close()
+	//db.Close()
 
 	//grpc
 	listener, err := net.Listen("tcp", ":50051")

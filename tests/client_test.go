@@ -32,7 +32,7 @@ func TestProcessPayment(t *testing.T) {
 	}
 	res, err := client.ProcessPayment(ctx, req)
 	if err != nil {
-		t.Fatalf("could not procced paymen:%v", err)
+		t.Fatalf("could not procced payment :%v\n", err)
 
 	}
 	if !res.Success {
